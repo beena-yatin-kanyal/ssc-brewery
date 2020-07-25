@@ -14,10 +14,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-                http
+        http
                 .authorizeRequests(authorize -> {
-                    authorize.antMatchers("/", "/webjars/**", "/login", "/resources/**").permitAll();
-                } )
+                    authorize
+                            .antMatchers("/", "/webjars/**", "/login", "/resources/**").permitAll()
+                            // permitting the resource as the open url under - /beers/find and find beer by query name (i.e. /beers?beerName=<some_beer_name>
+                            // section4 - assignment1
+                            .antMatchers("/beers/find", "/beers*").permitAll();
+                })
                 .authorizeRequests()
                 .anyRequest().authenticated()
                 .and()

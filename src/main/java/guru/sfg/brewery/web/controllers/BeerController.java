@@ -54,6 +54,7 @@ public class BeerController {
         return "beers/findBeers";
     }
 
+    // find beer with a query param name.
     @GetMapping
     public String processFindFormReturnMany(Beer beer, BindingResult result, Model model) {
         // find beers by name
