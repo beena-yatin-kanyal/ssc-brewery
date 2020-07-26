@@ -36,6 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
+    // To bring this method into the spring context we need to mark this method with the bean annotation.
     @Bean
     protected UserDetailsService userDetailsService() {
         UserDetails admin = User.withDefaultPasswordEncoder()
