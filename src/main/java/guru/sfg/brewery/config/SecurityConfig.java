@@ -40,7 +40,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .withUser("user")
                 .password("{noop}password")
-                .roles("USER");
+                .roles("USER")
+                // adding the custom user - assignment2 - section5
+                .and()
+                .withUser("scott")
+                .password("{noop}tiger")
+                .roles("CUSTOMER");
     }
 
     //    @Override
