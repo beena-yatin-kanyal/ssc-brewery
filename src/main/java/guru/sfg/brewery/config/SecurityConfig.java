@@ -50,7 +50,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .password("{SSHA}LT+zqH2PO+ALzl36ULU96DR/uJUSkrSi+7646Q==")
                 .roles("USER");
 
-        auth.inMemoryAuthentication().withUser("scott").password("tiger").roles("CUSTOMER");
+        auth.inMemoryAuthentication()
+                .withUser("scott")
+                .password("{SSHA}e0hpj7R8723Z3gJhLUAWIgw3qvQewQ/8+gQSew==")
+                .roles("CUSTOMER");
     }
 
     //    @Override
