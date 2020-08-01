@@ -19,14 +19,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-                http
+        http
                 .authorizeRequests(authorize -> {
                     authorize
                             .antMatchers("/", "/webjars/**", "/login", "/resources/**").permitAll()
                             .antMatchers("/beers/find", "/beers*").permitAll()
                             .antMatchers(HttpMethod.GET, "/api/v1/beer/**").permitAll()
                             .mvcMatchers(HttpMethod.GET, "/api/v1/beerUpc/{upc}").permitAll();
-                } )
+                })
                 .authorizeRequests()
                 .anyRequest().authenticated()
                 .and()
@@ -35,11 +35,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    PasswordEncoder passwordEncoder(){
+    PasswordEncoder passwordEncoder() {
+        // gives a collection of different set of passwords for instance ldap, sha256, bcrypt etc.
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
     @Override
+    // in here for every password we specify the type infront of type and to determine the type we refer to the "createDelegatingPasswordEncoder" method.
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 .withUser("spring")
@@ -70,19 +72,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //
 //        return new InMemoryUserDetailsManager(admin, user);
 //    }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
