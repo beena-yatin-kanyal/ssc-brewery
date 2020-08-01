@@ -24,7 +24,12 @@ public class PasswordEncodingTests {
         System.out.println(bcrypt.encode(PASSWORD));
         System.out.println(bcrypt.encode(PASSWORD));
         System.out.println(bcrypt.encode("guru"));
+    }
 
+    @Test
+    void testBcryptWithStrength15() {
+        PasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(15);
+        System.out.println(bCryptPasswordEncoder.encode("password@123!"));
     }
 
     @Test
