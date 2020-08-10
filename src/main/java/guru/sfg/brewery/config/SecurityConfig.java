@@ -66,6 +66,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return SfgPasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
+    // NOTE - the configure method having the AuthenticationManagerBuilder object helps to override the default spring boot auto configuration
+    // procedure
+
    // @Override
  //   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
        // auth.userDetailsService(this.jpaUserDetailsService).passwordEncoder(passwordEncoder());
